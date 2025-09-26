@@ -1,13 +1,16 @@
-from flask import Flask
+from flask import Flask, sqlalchemy
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydb.sqlite3'
+db = SQLAlchemy(app)
 
 
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, oorld!</p>"
+    return "<p>Hello, world!</p>"
 
 @app.route("/products")
 def products():
